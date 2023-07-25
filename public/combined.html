@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+    <title>Chat With Everyone</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row mt-5">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center">
+                    <img src="./chatlogo.png" alt="lets chat logo" class="custom-img">
+                    <h1 class="custom-header">
+                        It's For All
+                    </h1>
+                    <form id="messageForm" onsubmit="sendMessage(event)" class="mr-3 ml-3 mb-3">
+                        <div class="form-group">
+                            <input type="text" id="msgInput" placeholder="Type your message here" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-outline-success btn-lg">Send</button>
+                    </form>
+                    <div id="displayMessages" class="text-center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul id="messages"></ul>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+    <!-- CDN Link to include bootstrap for styling -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script>
+        const chatWithAll = io();
+        function sendMessage(event) {
+            event.preventDefault();
+            let message = document.getElementById("msgInput").value;
+            chatWithAll.emit('send-chat-message', message);
+            document.getElementById("msgInput").value = "";
+        }
+        /* recieves the message when the server fires the event chat-message */
+        chatWithAll.on('chat-message', (message) => {
+            toastr.info(message);
+            // document.getElementById('displayMessages').innerHTML += `<h5>${message}</h5>`;
+            // counter++;
+        })
+    </script>
+</body>
+</html>

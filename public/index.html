@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let's Chat</title>
+    <!-- Add the chat logo as icon in the browsers tab -->
+    <link rel="icon" href="chatlogo.png" sizes="16x16" type="image/png" />
+    <!-- CDN Link to include bootstrap for styling -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <!-- Link to use custom css written in index.css file -->
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 offset-md-3 text-center mt-5">
+          <div class="card shadow-lg">
+            <h1 class="mb-3">Whom would you like to Chat with ?</h1>
+            <a href="http://localhost:3200/chat-with-all">
+              <h4>Chat will All (Default)</h4>
+            </a>
+            <br /><br />
+            <a href="http://localhost:3200/chat">
+              <h4>Chat with Friends</h4>
+            </a>
+            <br /><br />
+            <a href="http://localhost:3200/customer-care">
+              <h4>Report Issues to Customer Care</h4>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
